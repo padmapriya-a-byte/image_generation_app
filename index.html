@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Image Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="background"></div>
+
+<div class="app-container">
+    <h1>✨ AI Image Generator</h1>
+    <p class="tagline">Generate images from text using Generative AI</p>
+
+    <form method="POST" onsubmit="showLoader()">
+        <textarea
+            name="prompt"
+            placeholder="Describe the image you want to generate..."
+            required></textarea>
+
+        <button type="submit">Generate Image 🚀</button>
+    </form>
+
+    <div id="loader" class="loader">
+        Generating image, please wait...
+    </div>
+
+    {% if image_path %}
+    <div class="result-card">
+        <h3>Generated Image</h3>
+        <img src="{{ image_path }}" alt="Generated Image">
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    function showLoader() {
+        document.getElementById("loader").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
